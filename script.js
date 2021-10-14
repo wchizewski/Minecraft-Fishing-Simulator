@@ -1,15 +1,17 @@
 // Minecraft Fishing Simulator
 
 // variables to store html elements
-let steveImgEl = document.getElementById("steve-img")
-let alexImgEl = document.getElementById("alex-img")
-let fishBtnEl = document.getElementById("fish-btn")
-let imgResultEl = document.getElementById("img-result")
-let numCodEl = document.getElementById("num-cod")
-let numSalmonEl = document.getElementById("num-salmon")
-let numTropicalEl = document.getElementById("num-tropical")
-let numPufferEl = document.getElementById("num-puffer")
-let villagerImgEl = document.getElementById("villager-img")
+let steveImgEl = document.getElementById("steve-img");
+let alexImgEl = document.getElementById("alex-img");
+let fishBtnEl = document.getElementById("fish-btn");
+let imgResultEl = document.getElementById("img-result");
+let numCodEl = document.getElementById("num-cod");
+let numSalmonEl = document.getElementById("num-salmon");
+let numTropicalEl = document.getElementById("num-tropical");
+let numPufferEl = document.getElementById("num-puffer");
+let villagerImgEl = document.getElementById("villager-img");
+let plus5Btn = document.getElementById("plus5");
+let until200Btn = document.getElementById("until200");
 
 // Global Variables
 let character = "Steve";
@@ -23,7 +25,9 @@ let numPuffer = 0;
 steveImgEl.addEventListener("click", selectSteve);
 alexImgEl.addEventListener("click", selectAlex);
 fishBtnEl.addEventListener("click", fishOnce);
-villagerImgEl.addEventListener("click", selectVillager)
+villagerImgEl.addEventListener("click", selectVillager);
+plus5Btn.addEventListener("click", plus5);
+until200Btn.addEventListener("click", until200);
 
 
 // Event Functions
@@ -56,20 +60,18 @@ function selectVillager() {
     character = "Villager"
 }
 
-
-
 function fishOnce() {
     // Test current character
     if (character === "Steve") {
         // Use Steve Probability
         let randNum = Math.random();
         console.log(randNum)
-        if (randNum < 0.7){
+        if (randNum < 0.7) {
             numCod++;
             imgResultEl.src = "img/Raw-Cod.png"
             numCodEl.innerHTML = numCod
             console.log("Raw Cod");
-        } else if (randNum < 0.9){
+        } else if (randNum < 0.9) {
             numSalmon++;
             imgResultEl.src = "img/Raw-Salmon.png"
             numSalmonEl.innerHTML = numSalmon
@@ -89,12 +91,12 @@ function fishOnce() {
         // Alex Probability
         let randNum = Math.random();
         console.log(randNum)
-        if (randNum < 0.1){
+        if (randNum < 0.1) {
             numCod++;
             imgResultEl.src = "img/Raw-Cod.png"
             numCodEl.innerHTML = numCod
             console.log("Raw Cod");
-        } else if (randNum < 0.2){
+        } else if (randNum < 0.2) {
             numSalmon++;
             imgResultEl.src = "img/Raw-Salmon.png"
             numSalmonEl.innerHTML = numSalmon
@@ -114,12 +116,12 @@ function fishOnce() {
         // Villager probability
         let randNum = Math.random();
         console.log(randNum)
-        if (randNum < .25){
+        if (randNum < .25) {
             numCod++;
             imgResultEl.src = "img/Raw-Cod.png"
             numCodEl.innerHTML = numCod
             console.log("Raw Cod");
-        } else if (randNum < 0.5){
+        } else if (randNum < 0.5) {
             numSalmon++;
             imgResultEl.src = "img/Raw-Salmon.png"
             numSalmonEl.innerHTML = numSalmon
@@ -136,4 +138,20 @@ function fishOnce() {
             console.log("Puffer Fish")
         }
     }
+}
+
+function plus5() {
+    for (let n = 1; n <= 5; n++) {
+        fishOnce();
+    }
+}
+
+function until200() {
+    let codTarget = numCod + 200;
+    let count = 0;
+    while (numCod < codTarget) {
+        fishOnce();
+        count++;
+    }
+    console.log(count);
 }
