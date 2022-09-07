@@ -140,6 +140,14 @@ function fishOnce() {
     }
 }
 
+function catchFish(probability, fish){
+    if (randNum < probability) {
+        numCod++;
+        imgResultEl.src = "img/Raw-Cod.png"
+        numCodEl.innerHTML = numCod
+        console.log("Raw Cod");
+}
+
 function plus5() {
     for (let n = 1; n <= 5; n++) {
         fishOnce();
