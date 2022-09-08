@@ -13,6 +13,7 @@ let villagerImgEl = document.getElementById("villager-img");
 let plus5Btn = document.getElementById("plus5");
 let until200Btn = document.getElementById("until200");
 
+
 // Global Variables
 let character = "Steve";
 let numCod = 0;
@@ -64,88 +65,39 @@ function fishOnce() {
     // Test current character
     if (character === "Steve") {
         // Use Steve Probability
-        let randNum = Math.random();
-        console.log(randNum)
-        if (randNum < 0.7) {
-            numCod++;
-            imgResultEl.src = "img/Raw-Cod.png"
-            numCodEl.innerHTML = numCod
-            console.log("Raw Cod");
-        } else if (randNum < 0.9) {
-            numSalmon++;
-            imgResultEl.src = "img/Raw-Salmon.png"
-            numSalmonEl.innerHTML = numSalmon
-            console.log("Raw Salmon");
-        } else if (randNum < 0.95) {
-            numTropical++;
-            imgResultEl.src = "img/Tropical-Fish.png"
-            numTropicalEl.innerHTML = numTropical
-            console.log("Tropical Fish")
-        } else {
-            numPuffer++;
-            imgResultEl.src = "img/Pufferfish.png"
-            numPufferEl.innerHTML = numPuffer
-            console.log("Puffer Fish")
-        }
+        catchFish(0.7, 0.9, 0.95)
     } if (character === "Alex") {
         // Alex Probability
-        let randNum = Math.random();
-        console.log(randNum)
-        if (randNum < 0.1) {
-            numCod++;
-            imgResultEl.src = "img/Raw-Cod.png"
-            numCodEl.innerHTML = numCod
-            console.log("Raw Cod");
-        } else if (randNum < 0.2) {
-            numSalmon++;
-            imgResultEl.src = "img/Raw-Salmon.png"
-            numSalmonEl.innerHTML = numSalmon
-            console.log("Raw Salmon");
-        } else if (randNum < 0.5) {
-            numTropical++;
-            imgResultEl.src = "img/Tropical-Fish.png"
-            numTropicalEl.innerHTML = numTropical
-            console.log("Tropical Fish")
-        } else {
-            numPuffer++;
-            imgResultEl.src = "img/Pufferfish.png"
-            numPufferEl.innerHTML = numPuffer
-            console.log("Puffer Fish")
-        }
+        catchFish(0.1, 0.2, 0.5)
     } if (character === "Villager") {
         // Villager probability
-        let randNum = Math.random();
-        console.log(randNum)
-        if (randNum < .25) {
-            numCod++;
-            imgResultEl.src = "img/Raw-Cod.png"
-            numCodEl.innerHTML = numCod
-            console.log("Raw Cod");
-        } else if (randNum < 0.5) {
-            numSalmon++;
-            imgResultEl.src = "img/Raw-Salmon.png"
-            numSalmonEl.innerHTML = numSalmon
-            console.log("Raw Salmon");
-        } else if (randNum < 0.75) {
-            numTropical++;
-            imgResultEl.src = "img/Tropical-Fish.png"
-            numTropicalEl.innerHTML = numTropical
-            console.log("Tropical Fish")
-        } else {
-            numPuffer++;
-            imgResultEl.src = "img/Pufferfish.png"
-            numPufferEl.innerHTML = numPuffer
-            console.log("Puffer Fish")
-        }
+        catchFish(0.25, 0.5, 0.75)
     }
 }
 
-function catchFish(probability, fish){
-    if (randNum < probability) {
+function catchFish(codProbability, salmonProbability, tropicalProbability){
+    let randNum = Math.random();
+    if (randNum < codProbability) {
         numCod++;
         imgResultEl.src = "img/Raw-Cod.png"
         numCodEl.innerHTML = numCod
         console.log("Raw Cod");
+    } else if (randNum < salmonProbability) {
+        numSalmon++;
+        imgResultEl.src = "img/Raw-Salmon.png"
+        numSalmonEl.innerHTML = numSalmon
+        console.log("Raw Salmon");
+    } else if (randNum < tropicalProbability) {
+        numTropical++;
+        imgResultEl.src = "img/Tropical-Fish.png"
+        numTropicalEl.innerHTML = numTropical
+        console.log("Tropical Fish")
+    } else {
+        numPuffer++;
+        imgResultEl.src = "img/Pufferfish.png"
+        numPufferEl.innerHTML = numPuffer
+        console.log("Puffer Fish")
+    }
 }
 
 function plus5() {
